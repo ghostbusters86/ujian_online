@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('nim')->nullable();
             $table->string('username');
             $table->string('password');
+            $table->string('password_nohash');
             $table->integer('classroom_id')->nullable();
             $table->enum('level', ['admin', 'mahasiswa']);
             $table->timestamps();
