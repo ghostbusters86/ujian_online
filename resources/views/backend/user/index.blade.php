@@ -44,7 +44,7 @@
 								<td>{{ $user->level  }}</td>
 								<td>
 									<a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-									<button href="" class="btn btn-danger btn-sm confirm-delete"><i class="fas fa-trash"></i></button>
+									<button data-id="{{ $user->id }}" type="submit" class="btn btn-danger btn-sm confirm-delete"><i class="fas fa-trash"></i></button>
 								</td>
 							</tr>
 							@endforeach
@@ -110,5 +110,28 @@
 @section('customScript')
 <script>
 	$('#addUser').on('shown.bs.modal')
+
+	$('.confirm-delete').click(function(){
+		$.confirm({
+			title: 'Confirm!',
+			content: 'Simple confirm!',
+			buttons: {
+				confirm: function () {
+					$.alert('Confirmed!');
+				},
+				cancel: function () {
+					$.alert('Canceled!');
+				},
+				somethingElse: {
+					text: 'Something else',
+					btnClass: 'btn-blue',
+					keys: ['enter', 'shift'],
+					action: function(){
+						$.alert('Something else?');
+					}
+				}
+			}
+		});
+	});
 </script>
 @stop
