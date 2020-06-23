@@ -15,7 +15,7 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa']], function () {
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/admin', 'Backend\DashboardController@index');
     Route::get('/admin', 'Backend\DashboardController@index');
-    
+
     Route::get('/admin/user', 'Backend\DashboardController@user');
     Route::get('/admin/soal', 'Backend\DashboardController@soal');
     Route::get('/admin/hasil', 'Backend\DashboardController@hasil');
@@ -24,4 +24,8 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
     Route::post('/admin/postuser', 'Backend\UserController@postuser');
     Route::get('/admin/deleteuser', 'Backend\UserController@deleteuser');
+    Route::post('/admin/postuser', 'Backend\UserController@postuser');
+    Route::get('/admin/deleteuser/{id}', 'Backend\UserController@deleteuser');
+    Route::get('/admin/edituser/{id}', 'Backend\UserController@edituser');
+    Route::post('/admin/updateuser', 'Backend\UserController@updateuser');
 });
