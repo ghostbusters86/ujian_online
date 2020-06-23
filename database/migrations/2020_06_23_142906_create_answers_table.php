@@ -18,7 +18,7 @@ class CreateAnswersTable extends Migration
             $table->string('file');
             $table->string('upload_at');
             $table->integer('user_id');
-            $table->integer('course_id');
+            $table->integer('question_id');
             $table->timestamps();
         });
     }

@@ -151,6 +151,7 @@
   <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+  <!-- JConfirm -->
   <script src="{{ asset('plugins/jconfirm/js/jquery-confirm.js') }}"></script>
   @yield('customScript')
   <!-- AdminLTE App -->

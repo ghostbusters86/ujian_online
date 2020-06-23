@@ -10,8 +10,15 @@ class UserController extends Controller
 {
     public function index()
     {
-        $questions = Question::all();
+        $questions = Question::orderBy('id','desc')->get();
 
         return view('frontend.user.index', compact('questions'));
+    }
+
+    public function getQuestion(Request $request)
+    {
+        $question = Question::find($request->id);
+
+        return $question->course->name;
     }
 }
