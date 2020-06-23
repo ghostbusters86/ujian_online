@@ -10,6 +10,6 @@ class Course extends Model
 
     public function question()
     {
-        return $this->belongsTo(Question::class);
+        return $this->hasOne(Question::class);
     }
 }

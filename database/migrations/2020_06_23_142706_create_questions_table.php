@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('file');
             $table->enum('status', ['active','nonactive']);
+            $table->string('upload_at');
             $table->integer('course_id');
             $table->timestamps();
         });

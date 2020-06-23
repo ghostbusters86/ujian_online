@@ -11,16 +11,19 @@ class QuestionSeeder extends Seeder
             [
                 'file'      => 'file1.pdf',
                 'status'    => 'active',
+                'upload_at' => time(),
                 'course_id' => 1
             ],
             [
                 'file'      => 'file2.pdf',
                 'status'    => 'active',
+                'upload_at' => time(),
                 'course_id' => 2
             ],
             [
                 'file'      => 'file3.pdf',
                 'status'    => 'active',
+                'upload_at' => time(),
                 'course_id' => 3
             ]
         ];
