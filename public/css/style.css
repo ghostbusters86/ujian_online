@@ -1,0 +1,39 @@
+/* IMPORT CLASS */
+@font-face {
+    font-family: "Arvo";
+    src: url("../fonts/arvo/Arvo-Regular.ttf") format("truetype");
+}
+/* END IMPORT CLASS */
+
+/* CUSTOM CSS CLASS */
+* {
+    font-family: 'Helvetica';
+}
+
+body {
+    background-image: url('../img/background/background.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.background-filter {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.card-rounded {
+    border-radius: 15px;
+}
+/* END CUSTOM CSS CLASS */
+
+/* CUSTOM BOOTSTRAP CLASS */
+nav .navbar-title {
+    color: #444044;
+}
+/* END CUSTOM BOOTSTRAP CLASS */
