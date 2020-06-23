@@ -1,16 +1,32 @@
 <?php
 
+use App\Answer;
 use Illuminate\Database\Seeder;
 
 class AnswerSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        //
+        $answers = [
+            [
+                'file'      => 'file3.pdf',
+                'user_id'   => 1,
+                'course_id' => 1
+            ],
+            [
+                'file'      => 'file4.pdf',
+                'user_id'   => 2,
+                'course_id' => 2
+            ],
+            [
+                'file'      => 'file5.pdf',
+                'user_id'   => 3,
+                'course_id' => 3
+            ]
+        ];
+
+        foreach ($answers as $answer) :
+            Answer::create($answer);
+        endforeach;
     }
 }
