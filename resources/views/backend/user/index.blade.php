@@ -43,8 +43,8 @@
 								<td>{{ $user->classroom->name }}</td>
 								<td>{{ $user->level  }}</td>
 								<td>
-									<a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-									<button data-id="{{ $user->id }}" type="submit" class="btn btn-danger btn-sm confirm-delete"><i class="fas fa-trash"></i></button>
+									<a href="{{ url('admin/edituser/'.$user->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+									<button data-redirect="{{ url('admin/deleteuser/'.$user->id) }}" type="submit" class="btn btn-danger btn-sm confirm-delete"><i class="fas fa-trash"></i></button>
 								</td>
 							</tr>
 							@endforeach
@@ -112,24 +112,16 @@
 	$('#addUser').on('shown.bs.modal')
 
 	$('.confirm-delete').click(function(){
+		let redirect = $(this).data('redirect')
 		$.confirm({
-			title: 'Confirm!',
-			content: 'Simple confirm!',
+			title: 'Hapus Data',
+			content: 'Apakah Anda Yakin Ingin Menghapus Data Ini?',
 			buttons: {
 				confirm: function () {
-					$.alert('Confirmed!');
+					window.location.href = redirect;
 				},
 				cancel: function () {
-					$.alert('Canceled!');
 				},
-				somethingElse: {
-					text: 'Something else',
-					btnClass: 'btn-blue',
-					keys: ['enter', 'shift'],
-					action: function(){
-						$.alert('Something else?');
-					}
-				}
 			}
 		});
 	});

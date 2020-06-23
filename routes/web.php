@@ -15,4 +15,6 @@ Route::get('/admin/matkul', 'Backend\DashboardController@matkul');
 Route::get('/admin/class', 'Backend\DashboardController@class');
 
 Route::post('/admin/postuser', 'Backend\UserController@postuser');
-Route::get('/admin/deleteuser', 'Backend\UserController@deleteuser');
+Route::get('/admin/deleteuser/{id}', 'Backend\UserController@deleteuser');
+Route::get('/admin/edituser/{id}', 'Backend\UserController@edituser');
+Route::post('/admin/updateuser', 'Backend\UserController@updateuser');
