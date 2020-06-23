@@ -18,4 +18,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Classroom::class);
     }
+
+    public function answer()
+    {
+        return $this->belongsTo(Answer::class);
+    }
 }
