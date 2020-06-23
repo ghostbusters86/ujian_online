@@ -19,9 +19,10 @@ class DashboardController extends Controller
 
     public function user()
     {
-    	$users = User::all();
+    	$users = User::where('level', 'mahasiswa')->get();
+        $classroom = Classroom::all();
 
-        return view('backend.user.index', compact('users'));
+        return view('backend.user.index', compact('users','classroom'));
     }
 
     public function soal()

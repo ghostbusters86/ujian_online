@@ -16,7 +16,7 @@ class User extends Authenticatable
 
     public function classroom()
     {
-        return $this->hasOne(Classroom::class);
+        return $this->belongsTo(Classroom::class);
     }
 
     public function answer()

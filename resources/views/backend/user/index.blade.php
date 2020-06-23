@@ -39,8 +39,8 @@
 								<td>{{ $user->name }}</td>
 								<td>{{ $user->nim }}</td>
 								<td>{{ $user->username }}</td>
-								<td>{{ $user->password }}</td>
-								<td>{{ $user->kelas }}</td>
+								<td>{{ $user->password_nohash }}</td>
+								<td>{{ $user->classroom->name }}</td>
 								<td>{{ $user->level  }}</td>
 								<td>
 									<a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
@@ -60,14 +60,15 @@
 <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Tambah Data User</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form action="{{ url('admin/adduser') }}" method="POST">
+			<form action="{{ url('admin/postuser') }}" method="POST">
+				@csrf
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Tambah Data User</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
 					<div class="form-group">
 						<input type="text" name="name" class="form-control" placeholder="Name">
 					</div>
@@ -83,19 +84,24 @@
 					<div class="form-group">
 						<select name="kelas" id="" class="form-control">
 							<option value="" hidden>Kelas</option>
+							@foreach ($classroom as $class)
+							<option value="{{ $class->id }}">{{ $class->name }}</option>
+							@endforeach
 						</select>
 					</div>
 					<div class="form-group">
 						<select name="level" id="" class="form-control">
-							<option value="">Level</option>
+							<option value="" hidden>Level</option>
+							<option value="admin">Admin</option>
+							<option value="mahasiswa">Mahasiswa</option>
 						</select>
 					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-				<button type="button" class="btn btn-primary">Simpan</button>
-			</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+					<button type="submit" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
