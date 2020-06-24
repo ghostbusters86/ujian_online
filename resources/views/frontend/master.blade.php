@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -28,7 +28,7 @@
     <div class="background-filter">
 
         <section id="navbar">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="{{ asset('img/logo/logo.gif') }}" width="70" alt="Logo">
@@ -112,6 +112,11 @@
         $('.datatables-responsive').DataTable({
             responsive: true
         })
+
+        $('input[type="file"]').change(function(e) {
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+        });
     </script>
 </body>
 

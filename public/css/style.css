@@ -14,7 +14,7 @@ body {
     background-image: url('../img/background/background.jpg');
     background-size: cover;
     height: 100vh;
-    padding-top: 95px;
+    /* padding-top: 95px; */
 }
 
 .background-filter {

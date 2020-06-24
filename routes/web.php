@@ -10,6 +10,7 @@ Route::get('/logout', 'Frontend\HomeController@logout');
 Route::group(['middleware' => ['auth', 'checkRole:mahasiswa']], function () {
     Route::get('/user', 'Frontend\UserController@index');
     Route::post('/user/getQuestion', 'Frontend\UserController@getQuestion');
+    Route::post('/user/answer/upload', 'Frontend\UserController@answerupload');
 });
 
 // Backend Route

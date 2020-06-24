@@ -9,7 +9,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered text-center datatables-responsive">
+                    <table class="table table-striped text-center datatables-responsive">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -42,37 +42,59 @@
 <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="uploadModalLabel">Informasi Upload</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <small>Nama</small>
-                    <input type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>
+            <form action="{{ url('user/answer/upload') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Informasi Upload</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <small>NIM</small>
-                    <input type="text" class="form-control" value="{{ auth()->user()->nim }}" readonly>
+                <div class="modal-body">
+                    @csrf
+                    <input type="hidden" name="id" id="questionID">
+                    <h5 class="text-center">Mahasiswa</h5>
+                    <hr>
+                    <div class="form-group">
+                        <small>Nama</small>
+                        <input type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <small>NIM</small>
+                        <input type="text" class="form-control" value="{{ auth()->user()->nim }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <small>Kelas</small>
+                        <input type="text" class="form-control" value="{{ auth()->user()->classroom->name }}" readonly>
+                    </div>
+                    <h5 class="text-center">Mata Kuliah</h5>
+                    <hr>
+                    <div class="form-group">
+                        <small>Mata Kuliah</small>
+                        <input type="text" id="course" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <small>Upload Jawaban</small>
+                        <div class="custom-file">
+                            <input type="file" name="file" class="custom-file-input" id="answer">
+                            <label class="custom-file-label" for="answer">Choose file</label>
+                        </div>
+                        @if($errors->has('file')) <small class="text-danger">{{ $errors->first('file') }}</small> @endif
+                    </div>
+                    <div class="alert alert-warning">
+                        Note : Anda hanya bisa mengupload 1 kali, Pastikan file yang anda upload sudah benar.
+                    </div>
                 </div>
-                <div class="form-group">
-                    <small>Kelas</small>
-                    <input type="text" class="form-control" value="{{ auth()->user()->classroom->name }}" readonly>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Upload <i class="fad fa-upload"></i></button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
 
 @section('custom-script')
 <script>
-    $('.get-question').click(function() {
+    $('table tbody').on('click', '.get-question', function() {
         let id = $(this).data('id')
 
         $.ajaxSetup({
@@ -87,9 +109,10 @@
             data: {
                 id: id
             },
-            dataType: 'html',
+            dataType: 'json',
             success: function(result) {
-                console.log(result);
+                $('input#course').val(result.course)
+                $('input#questionID').val(result.id)
             }
         })
     })
