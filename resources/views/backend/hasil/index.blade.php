@@ -36,11 +36,11 @@
 							@foreach ($answers as $answer)
 							<tr>
 								<td>{{ $no++ }}.</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ $answer->file }}</td>
+								<td>{{ $answer->file }}</td>
+								<td>{{ $answer->file }}</td>
+								<td>{{ $answer->file }}</td>
+								<td>{{ $answer->file }}</td>
 								<td>
 									<a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
 									<button href="" class="btn btn-danger btn-sm confirm-delete"><i class="fas fa-trash"></i></button>

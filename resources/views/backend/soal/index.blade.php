@@ -34,9 +34,9 @@
 							@foreach ($question as $quest)
 							<tr>
 								<td>{{ $no++ }}.</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ $quest->course->name }}</td>
+								<td>{{ $quest->file }}</td>
+								<td>{{ $quest->status }}</td>
 								<td>
 									<a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
 									<button href="" class="btn btn-danger btn-sm confirm-delete"><i class="fas fa-trash"></i></button>
