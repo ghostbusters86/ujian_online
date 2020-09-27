@@ -30,4 +30,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/admin/deleteuser/{id}', 'Backend\UserController@deleteuser');
     Route::get('/admin/edituser/{id}', 'Backend\UserController@edituser');
     Route::post('/admin/updateuser', 'Backend\UserController@updateuser');
+    
+    Route::post('/admin/postmatkul','Backend\CourseController@postmatkul');
+    Route::get('/admin/deletematkul/{id}','Backend\CourseController@deletematkul');
+    Route::get('/admin/editmatkul/{id}', 'Backend\CourseController@editmatkul');
+    Route::post('/admin/updatematkul', 'Backend\CourseController@updatematkul');
 });

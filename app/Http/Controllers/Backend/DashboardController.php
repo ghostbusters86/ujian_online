@@ -42,7 +42,7 @@ class DashboardController extends Controller
     public function matkul()
     {
 
-    	$matkuls = Course::all();
+        $matkuls = Course::all();
 
         return view('backend.matkul.index',compact('matkuls'));
     }
@@ -50,9 +50,9 @@ class DashboardController extends Controller
     public function class()
     {
 
-    	$classroom = Classroom::all();
+    	$classrooms = Classroom::all();
 
-        return view('backend.class.index',compact('classroom'));
+        return view('backend.class.index',compact('classrooms'));
     }
 
 }
